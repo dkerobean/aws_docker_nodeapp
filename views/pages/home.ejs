@@ -1,0 +1,26 @@
+<%- include('../partials/header') %>
+    <div class="container">
+        <h1 class="mb-4">Blog Posts</h1>
+        <a href="/posts/new" class="btn btn-primary mb-3">Create New Post</a>
+        <ul class="list-group">
+            <% posts.forEach(post=> { %>
+                <li class="list-group-item post">
+                    <h2><a href="/posts/<%= post._id %>">
+                            <%= post.title %>
+                        </a></h2>
+                    <p class="meta">Posted on <%= new Date(post.date).toLocaleDateString('en-US', { year: 'numeric' ,
+                            month: 'long' , day: 'numeric' }) %>
+                    </p>
+                    <p>
+                        <%= post.body.substring(0, 150) %>...
+                    </p>
+                    <div>
+                        <form action="/posts/delete/<%= post._id %>" method="POST" class="d-inline">
+                            <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+                        </form>
+                        <a href="/posts/edit/<%= post._id %>" class="btn btn-secondary btn-sm ml-2">Edit</a>
+                    </div>
+                </li>
+                <% }) %>
+        </ul>
+    </div>

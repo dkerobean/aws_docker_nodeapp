@@ -1,0 +1,15 @@
+<%- include('../partials/header') %>
+    <div class="container">
+        <article class="post">
+            <h1>
+                <%= post.title %>
+            </h1>
+            <p class="meta">Posted on <%= new Date(post.date).toLocaleDateString('en-US', { year: 'numeric' ,
+                    month: 'long' , day: 'numeric' }) %>
+            </p>
+            <p>
+                <%= post.body %>
+            </p>
+            <a href="/" class="btn btn-secondary">Back to Home</a>
+        </article>
+    </div>
